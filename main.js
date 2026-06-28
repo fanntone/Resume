@@ -4,17 +4,37 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---- Preloader: reveal page once loaded ---- */
+  /* ---- Preloader: let the character play, then lift the curtain ---- */
   function reveal() {
     document.body.classList.remove("is-loading");
   }
-  window.addEventListener("load", () => setTimeout(reveal, reduceMotion ? 0 : 650));
+  // give the avatar drop + wave + progress bar time to be seen
+  window.addEventListener("load", () => setTimeout(reveal, reduceMotion ? 0 : 1600));
   // safety fallback so the page is never stuck behind the preloader
-  setTimeout(reveal, 3500);
+  setTimeout(reveal, 5000);
 
   /* ---- Current year ---- */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---- Language toggle (zh default / en) ---- */
+  const root = document.documentElement;
+  const langSwitch = document.getElementById("langSwitch");
+  const applyLang = (lang) => {
+    const en = lang === "en";
+    root.classList.toggle("lang-en", en);
+    root.lang = en ? "en" : "zh-Hant";
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+    // make sure language-swapped content is never stuck hidden by reveal()
+    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+  };
+  // sync attribute with the class already set by the inline head script
+  root.lang = root.classList.contains("lang-en") ? "en" : "zh-Hant";
+  if (langSwitch) {
+    langSwitch.addEventListener("click", () => {
+      applyLang(root.classList.contains("lang-en") ? "zh" : "en");
+    });
+  }
 
   /* ---- Header: compact state on scroll ---- */
   const header = document.getElementById("header");

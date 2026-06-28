@@ -28,18 +28,29 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Cpolygon points='50,3 95,29 95,81 50,107 5,81 5,29' fill='%23ff8400'/%3E%3Ctext x='50' y='71' font-family='Arial' font-weight='900' font-size='46' text-anchor='middle' fill='%232d2a24'%3EF%3C/text%3E%3C/svg%3E"
     />
+
+    <!-- set saved language before paint (no flash) -->
+    <script>
+      try {
+        if (localStorage.getItem("lang") === "en") {
+          document.documentElement.classList.add("lang-en");
+          document.documentElement.lang = "en";
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body class="is-loading">
-    <!-- ░░ Preloader ░░ -->
+    <!-- ░░ Preloader / character transition ░░ -->
     <div class="preloader" id="preloader" aria-hidden="true">
-      <div class="preloader__badge">
-        <svg viewBox="0 0 100 110" class="hex hex--preloader">
-          <polygon points="50,3 95,29 95,81 50,107 5,81 5,29" class="hex__bg" />
-          <polygon points="50,3 95,29 95,81 50,107 5,81 5,29" class="hex__fill" />
-          <text x="50" y="68" class="hex__text">FW</text>
-        </svg>
+      <div class="preloader__stage">
+        <div class="preloader__avatar">
+          <span class="preloader__speech">Hi! 你好 👋</span>
+          <img src="assets/avatar.svg" alt="" width="132" height="148" />
+          <span class="preloader__shadow"></span>
+        </div>
+        <p class="preloader__name">FANN&nbsp;WU<em>吳皇耀 · 作品集</em></p>
+        <div class="preloader__bar"><span></span></div>
       </div>
-      <p class="preloader__label">LOADING — 載入中</p>
     </div>
 
     <!-- ░░ Header ░░ -->
@@ -52,16 +63,22 @@
         <span class="brand__name">FANN&nbsp;WU<em>吳皇耀</em></span>
       </a>
 
-      <nav class="nav" id="nav">
-        <a href="#work" class="nav__link">Work<span>作品</span></a>
-        <a href="#about" class="nav__link">About<span>關於</span></a>
-        <a href="#experience" class="nav__link">Experience<span>經歷</span></a>
-        <a href="#contact" class="nav__link nav__link--cta">Contact<span>聯絡</span></a>
-      </nav>
+      <div class="header__right">
+        <nav class="nav" id="nav">
+          <a href="#work" class="nav__link"><span data-lang="en">Work</span><span data-lang="zh">作品</span></a>
+          <a href="#about" class="nav__link"><span data-lang="en">About</span><span data-lang="zh">關於</span></a>
+          <a href="#experience" class="nav__link"><span data-lang="en">Experience</span><span data-lang="zh">經歷</span></a>
+          <a href="#contact" class="nav__link nav__link--cta"><span data-lang="en">Contact</span><span data-lang="zh">聯絡</span></a>
+        </nav>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+        <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch language / 切換語言">
+          <span data-lang="zh">EN</span><span data-lang="en">中文</span>
+        </button>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </header>
 
     <main id="top">
@@ -70,7 +87,8 @@
         <div class="hero__inner">
           <div class="hero__copy">
             <p class="eyebrow reveal">
-              <span class="dot"></span> PORTFOLIO · 作品集
+              <span class="dot"></span>
+              <span data-lang="zh">PORTFOLIO · 作品集</span><span data-lang="en">PORTFOLIO</span>
               <span class="eyebrow__sep">/</span> TAIPEI, TAIWAN
             </p>
 
@@ -80,34 +98,41 @@
               <span class="hl">AI&#8209;assisted</span> backends.
             </h1>
 
-            <p class="hero__lede reveal">
-              資深後端 / 遊戲 / 區塊鏈工程師 · AI 應用架構師。具
-              <strong>15+ 年</strong>經驗，精通 C++、C#、Golang、Java、Solidity
-              多語言技術棧，主導交付 <strong>10+ 款遊戲後端</strong>與
-              <strong>5+ 區塊鏈專案</strong>，橫跨 Ethereum / Solana / EOS / Tron，
-              近年以 Claude Code、Codex 帶領 AI-assisted 開發團隊。
+            <p class="hero__lede reveal" data-lang="zh">
+              <strong>15+ 年</strong>資深工程師，作品橫跨桌面軟體、跨平台 App、
+              遊戲後端到區塊鏈系統，技術棧涵蓋 C++ / C# / Golang / Java / Solidity。
+              近年轉型 <strong>AI 應用架構師</strong>，把 AI-assisted 開發實際落地為團隊的交付能力。
+            </p>
+            <p class="hero__lede reveal" data-lang="en">
+              A <strong>15+ year</strong> senior engineer whose work spans desktop software,
+              cross-platform apps, game backends and blockchain systems — across
+              C++ / C# / Golang / Java / Solidity. Now an <strong>AI Application Architect</strong>,
+              turning AI-assisted development into real, shippable team output.
             </p>
 
             <div class="hero__actions reveal">
-              <a href="#work" class="btn btn--solid">View Live Work <span class="arrow">↘</span></a>
-              <a href="#contact" class="btn btn--ghost">Get in touch</a>
+              <a href="#work" class="btn btn--solid"><span data-lang="en">View Live Work</span><span data-lang="zh">看線上作品</span> <span class="arrow">↘</span></a>
+              <a href="#contact" class="btn btn--ghost"><span data-lang="en">Get in touch</span><span data-lang="zh">聯絡我</span></a>
             </div>
 
             <ul class="stats reveal" aria-label="key numbers">
-              <li><b>15<span>+</span></b><span class="stats__k">Years 年資</span></li>
-              <li><b>10<span>+</span></b><span class="stats__k">Game backends</span></li>
-              <li><b>5<span>+</span></b><span class="stats__k">Blockchain projects</span></li>
-              <li><b>18<span>+</span></b><span class="stats__k">Shipped projects</span></li>
+              <li><b>15<span>+</span></b><span class="stats__k"><span data-lang="en">Years</span><span data-lang="zh">年資</span></span></li>
+              <li><b>5<span>+</span></b><span class="stats__k"><span data-lang="en">Languages</span><span data-lang="zh">語言</span></span></li>
+              <li><b>4<span></span></b><span class="stats__k"><span data-lang="en">Chains</span><span data-lang="zh">多鏈</span></span></li>
+              <li><b>10<span>x</span></b><span class="stats__k"><span data-lang="en">AI-assisted</span><span data-lang="zh">AI 效率</span></span></li>
             </ul>
           </div>
 
-          <div class="hero__badge reveal" aria-hidden="true">
-            <svg viewBox="0 0 100 110" class="hex hex--hero">
-              <polygon points="50,3 95,29 95,81 50,107 5,81 5,29" class="hex__bg" />
-              <polygon points="50,3 95,29 95,81 50,107 5,81 5,29" class="hex__ring" />
-              <text x="50" y="66" class="hex__text">FW</text>
-            </svg>
-            <span class="hero__badge-chip"><span class="pulse"></span>Available for projects</span>
+          <div class="hero__scene reveal">
+            <img
+              class="hero__scene-img"
+              src="assets/hero-scene.svg"
+              alt="插畫：吳皇耀在雙螢幕前開發"
+            />
+            <span class="hero__badge-chip">
+              <span class="pulse"></span>
+              <span data-lang="en">Available for projects</span><span data-lang="zh">開放接案中</span>
+            </span>
           </div>
         </div>
 
@@ -137,129 +162,186 @@
       <section class="section work" id="work">
         <header class="section__head reveal">
           <p class="section__idx">01 — SELECTED WORK</p>
-          <h2 class="section__title">Live Demos<em>線上作品 · 可直接遊玩</em></h2>
-          <p class="section__sub">
+          <h2 class="section__title">Live Demos<em><span data-lang="zh">線上作品 · 可直接遊玩</span><span data-lang="en">Live demos · play instantly</span></em></h2>
+          <p class="section__sub" data-lang="zh">
             以下皆為可直接開啟的線上專案，純前端／可離線運行，點擊卡片即可啟動。
+          </p>
+          <p class="section__sub" data-lang="en">
+            Every project below runs live in the browser — front-end only and offline-capable. Tap a card to launch.
           </p>
         </header>
 
         <div class="cards" id="cards">
           <!-- 1 -->
           <a class="card reveal" href="https://fanntone.github.io/LeJugeDePaix/" target="_blank" rel="noopener" style="--brand:#c79a3a">
-            <span class="card__bar"></span>
-            <div class="card__top">
+            <div class="card__media">
+              <img src="assets/shots/judge.png" alt="Judge's Fortune preview" loading="lazy" />
               <span class="card__num">01</span>
               <span class="card__cat">ARCADE&nbsp;GAME</span>
             </div>
-            <h3 class="card__title">Judge's Fortune<em>法官運勢盤</em></h3>
-            <p class="card__desc">
-              改編自古董法國機械賭運盤「Le Juge de Paix」的滾珠遊戲：3 顆鋼珠落入 3×3 孔位，
-              依連線、同色與獎勵珠計算賠付。
-            </p>
-            <div class="card__tags"><span>JavaScript</span><span>Game Logic</span><span>Odds Engine</span></div>
-            <span class="card__go">Launch <i>↗</i></span>
+            <div class="card__content">
+              <h3 class="card__title" data-lang="zh">Judge's Fortune<em>法官運勢盤</em></h3>
+              <h3 class="card__title" data-lang="en">Judge's Fortune<em>Ball-drop fortune game</em></h3>
+              <p class="card__desc" data-lang="zh">
+                改編自古董法國機械賭運盤「Le Juge de Paix」的滾珠遊戲：3 顆鋼珠落入 3×3 孔位，
+                依連線、同色與獎勵珠計算賠付。
+              </p>
+              <p class="card__desc" data-lang="en">
+                A ball-drop game adapted from the antique French fortune machine “Le Juge de Paix”:
+                three steel balls land in a 3×3 grid, with payouts from lines, colors and a bonus ball.
+              </p>
+              <div class="card__tags"><span>JavaScript</span><span>Game Logic</span><span>Odds Engine</span></div>
+              <span class="card__go">Launch <i>↗</i></span>
+            </div>
           </a>
 
           <!-- 2 -->
           <a class="card reveal" href="https://fanntone.github.io/Fishing/" target="_blank" rel="noopener" style="--brand:#3d8aa3">
-            <span class="card__bar"></span>
-            <div class="card__top">
+            <div class="card__media">
+              <img src="assets/shots/fishing.png" alt="River fishing preview" loading="lazy" />
               <span class="card__num">02</span>
               <span class="card__cat">CANVAS&nbsp;GAME</span>
             </div>
-            <h3 class="card__title">清流釣り<em>河口釣魚 · Fishing</em></h3>
-            <p class="card__desc">
-              以和紙質感打造的療癒系釣魚小品，Canvas 即時渲染、觸控拋竿，
-              手機與桌機皆可遊玩的純前端體驗。
-            </p>
-            <div class="card__tags"><span>Canvas</span><span>JavaScript</span><span>Mobile</span></div>
-            <span class="card__go">Launch <i>↗</i></span>
+            <div class="card__content">
+              <h3 class="card__title" data-lang="zh">清流釣り<em>河口釣魚 · Fishing</em></h3>
+              <h3 class="card__title" data-lang="en">River Fishing<em>清流釣り</em></h3>
+              <p class="card__desc" data-lang="zh">
+                以和紙質感打造的療癒系釣魚小品，Canvas 即時渲染、觸控拋竿，
+                手機與桌機皆可遊玩的純前端體驗。
+              </p>
+              <p class="card__desc" data-lang="en">
+                A relaxing fishing vignette with a washi-paper aesthetic — real-time Canvas rendering,
+                tap-to-cast, playable on both mobile and desktop, fully front-end.
+              </p>
+              <div class="card__tags"><span>Canvas</span><span>JavaScript</span><span>Mobile</span></div>
+              <span class="card__go">Launch <i>↗</i></span>
+            </div>
           </a>
 
           <!-- 3 -->
           <a class="card reveal" href="https://fanntone.github.io/houserace/" target="_blank" rel="noopener" style="--brand:#22904b">
-            <span class="card__bar"></span>
-            <div class="card__top">
+            <div class="card__media">
+              <img src="assets/shots/houserace.png" alt="Crown Racecourse preview" loading="lazy" />
               <span class="card__num">03</span>
               <span class="card__cat">PROVABLY&nbsp;FAIR</span>
             </div>
-            <h3 class="card__title">皇冠賽馬場<em>Crown Racecourse</em></h3>
-            <p class="card__desc">
-              Provably Fair 賽馬機：賽前公開賽果種子的 SHA-256 鎖定、賽後公開驗證；
-              以 Plackett-Luce 公式計算賠率，支援房主端 P2P 多人連線，無需後端。
-            </p>
-            <div class="card__tags"><span>P2P</span><span>SHA-256</span><span>Plackett-Luce</span></div>
-            <span class="card__go">Launch <i>↗</i></span>
+            <div class="card__content">
+              <h3 class="card__title" data-lang="zh">皇冠賽馬場<em>Crown Racecourse</em></h3>
+              <h3 class="card__title" data-lang="en">Crown Racecourse<em>皇冠賽馬場</em></h3>
+              <p class="card__desc" data-lang="zh">
+                Provably Fair 賽馬機：賽前公開賽果種子的 SHA-256 鎖定、賽後公開驗證；
+                以 Plackett-Luce 公式計算賠率，支援房主端 P2P 多人連線，無需後端。
+              </p>
+              <p class="card__desc" data-lang="en">
+                A provably-fair racing machine: the result seed is SHA-256 committed before the race and
+                revealed after for verification. Odds use the Plackett-Luce model, with host-side P2P
+                multiplayer and no backend.
+              </p>
+              <div class="card__tags"><span>P2P</span><span>SHA-256</span><span>Plackett-Luce</span></div>
+              <span class="card__go">Launch <i>↗</i></span>
+            </div>
           </a>
 
           <!-- 4 -->
           <a class="card reveal" href="https://fanntone.github.io/Dice-blackwhite/" target="_blank" rel="noopener" style="--brand:#ce4036">
-            <span class="card__bar"></span>
-            <div class="card__top">
+            <div class="card__media">
+              <img src="assets/shots/diceduel.png" alt="Dice Duel preview" loading="lazy" />
               <span class="card__num">04</span>
               <span class="card__cat">MULTIPLAYER</span>
             </div>
-            <h3 class="card__title">Dice Duel<em>紅黑大小單雙 · 多人對戰</em></h3>
-            <p class="card__desc">
-              2–3 人即時連線骰子對戰，採房主端 P2P / WebRTC 架構建立與加入房間，
-              手機友善介面，即時同步骰子狀態與開盅結果。
-            </p>
-            <div class="card__tags"><span>WebRTC</span><span>P2P</span><span>Realtime</span></div>
-            <span class="card__go">Launch <i>↗</i></span>
+            <div class="card__content">
+              <h3 class="card__title" data-lang="zh">Dice Duel<em>紅黑大小單雙 · 多人對戰</em></h3>
+              <h3 class="card__title" data-lang="en">Dice Duel<em>Red / Black · Multiplayer</em></h3>
+              <p class="card__desc" data-lang="zh">
+                2–3 人即時連線骰子對戰，採房主端 P2P / WebRTC 架構建立與加入房間，
+                手機友善介面，即時同步骰子狀態與開盅結果。
+              </p>
+              <p class="card__desc" data-lang="en">
+                Real-time 2–3 player dice duels over host-side P2P / WebRTC rooms. Mobile-friendly UI
+                with live syncing of dice state and reveal results.
+              </p>
+              <div class="card__tags"><span>WebRTC</span><span>P2P</span><span>Realtime</span></div>
+              <span class="card__go">Launch <i>↗</i></span>
+            </div>
           </a>
 
           <!-- 5 -->
           <a class="card reveal" href="https://fanntone.github.io/Dice/" target="_blank" rel="noopener" style="--brand:#ff8400">
-            <span class="card__bar"></span>
-            <div class="card__top">
+            <div class="card__media">
+              <img src="assets/shots/dice.png" alt="Dice preview" loading="lazy" />
               <span class="card__num">05</span>
               <span class="card__cat">CLASSIC&nbsp;GAME</span>
             </div>
-            <h3 class="card__title">Dice<em>骰子大小單雙</em></h3>
-            <p class="card__desc">
-              經典骰子下注遊戲，實作大小單雙與猜號兩種玩法、賠率計算與下注流程，
-              純前端可離線運行。
-            </p>
-            <div class="card__tags"><span>JavaScript</span><span>Odds Engine</span><span>Offline</span></div>
-            <span class="card__go">Launch <i>↗</i></span>
+            <div class="card__content">
+              <h3 class="card__title" data-lang="zh">Dice<em>骰子大小單雙</em></h3>
+              <h3 class="card__title" data-lang="en">Dice<em>Big / Small · Odd / Even</em></h3>
+              <p class="card__desc" data-lang="zh">
+                經典骰子下注遊戲，實作大小單雙與猜號兩種玩法、賠率計算與下注流程，
+                純前端可離線運行。
+              </p>
+              <p class="card__desc" data-lang="en">
+                A classic dice betting game with big/small, odd/even and number-guess modes, full odds
+                calculation and bet flow — front-end only and offline-ready.
+              </p>
+              <div class="card__tags"><span>JavaScript</span><span>Odds Engine</span><span>Offline</span></div>
+              <span class="card__go">Launch <i>↗</i></span>
+            </div>
           </a>
 
           <!-- 6 -->
           <a class="card reveal" href="https://fanntone.github.io/ToeicPractice/" target="_blank" rel="noopener" style="--brand:#d4a017">
-            <span class="card__bar"></span>
-            <div class="card__top">
+            <div class="card__media">
+              <img src="assets/shots/toeic.png" alt="TOEIC Gold preview" loading="lazy" />
               <span class="card__num">06</span>
               <span class="card__cat">LEARNING&nbsp;TOOL</span>
             </div>
-            <h3 class="card__title">TOEIC Gold<em>多益金色衝刺</em></h3>
-            <p class="card__desc">
-              原創多益風格題庫練習系統，涵蓋字彙、聽力、閱讀三大模組，
-              支援錯題本自動收錄與個人化設定，純前端離線運行、免登入。
-            </p>
-            <div class="card__tags"><span>JavaScript</span><span>LocalStorage</span><span>Offline</span></div>
-            <span class="card__go">Launch <i>↗</i></span>
+            <div class="card__content">
+              <h3 class="card__title" data-lang="zh">TOEIC Gold<em>多益金色衝刺</em></h3>
+              <h3 class="card__title" data-lang="en">TOEIC Gold<em>TOEIC practice system</em></h3>
+              <p class="card__desc" data-lang="zh">
+                原創多益風格題庫練習系統，涵蓋字彙、聽力、閱讀三大模組，
+                支援錯題本自動收錄與個人化設定，純前端離線運行、免登入。
+              </p>
+              <p class="card__desc" data-lang="en">
+                An original TOEIC-style practice system covering vocabulary, listening and reading,
+                with an automatic mistake log and personalized settings — offline, front-end, no login.
+              </p>
+              <div class="card__tags"><span>JavaScript</span><span>LocalStorage</span><span>Offline</span></div>
+              <span class="card__go">Launch <i>↗</i></span>
+            </div>
           </a>
 
           <!-- 7 -->
           <a class="card reveal" href="https://fanntone.github.io/FuturesPracticeTests/" target="_blank" rel="noopener" style="--brand:#176cfe">
-            <span class="card__bar"></span>
-            <div class="card__top">
+            <div class="card__media">
+              <img src="assets/shots/futures.png" alt="Futures exam practice preview" loading="lazy" />
               <span class="card__num">07</span>
               <span class="card__cat">LEARNING&nbsp;TOOL</span>
             </div>
-            <h3 class="card__title">期貨業務員考題<em>Futures Exam Practice</em></h3>
-            <p class="card__desc">
-              依官方歷屆試題建立的離線練習系統，支援依年度／科目篩選、進階模擬測驗、
-              歷史紀錄與錯題本自動收錄，資料僅存於本機瀏覽器。
-            </p>
-            <div class="card__tags"><span>JavaScript</span><span>LocalStorage</span><span>Quiz</span></div>
-            <span class="card__go">Launch <i>↗</i></span>
+            <div class="card__content">
+              <h3 class="card__title" data-lang="zh">期貨業務員考題<em>Futures Exam Practice</em></h3>
+              <h3 class="card__title" data-lang="en">Futures Exam Practice<em>期貨業務員考題</em></h3>
+              <p class="card__desc" data-lang="zh">
+                依官方歷屆試題建立的離線練習系統，支援依年度／科目篩選、進階模擬測驗、
+                歷史紀錄與錯題本自動收錄，資料僅存於本機瀏覽器。
+              </p>
+              <p class="card__desc" data-lang="en">
+                An offline practice system built from official past exams — filter by year/subject,
+                advanced mock tests, history and an automatic mistake log, with all data kept in your browser.
+              </p>
+              <div class="card__tags"><span>JavaScript</span><span>LocalStorage</span><span>Quiz</span></div>
+              <span class="card__go">Launch <i>↗</i></span>
+            </div>
           </a>
         </div>
 
-        <p class="work__more reveal">
+        <p class="work__more reveal" data-lang="zh">
           更多專案（NFT / DeFi / 預測市場 / 錢包系統等 18+）：
-          <a href="https://cake.me/fanntone/portfolios" target="_blank" rel="noopener">cake.me/fanntone/portfolios ↗</a>
+          <a href="https://www.cake.me/me/fanntone/portfolios" target="_blank" rel="noopener">cake.me/me/fanntone/portfolios ↗</a>
+        </p>
+        <p class="work__more reveal" data-lang="en">
+          More projects (NFT / DeFi / prediction markets / wallets, 18+):
+          <a href="https://www.cake.me/me/fanntone/portfolios" target="_blank" rel="noopener">cake.me/me/fanntone/portfolios ↗</a>
         </p>
       </section>
 
@@ -267,21 +349,53 @@
       <section class="section about" id="about">
         <header class="section__head reveal">
           <p class="section__idx">02 — ABOUT</p>
-          <h2 class="section__title">Profile &amp; Stack<em>關於我 · 技術棧</em></h2>
+          <h2 class="section__title">Profile &amp; Stack<em><span data-lang="zh">關於我 · 技術棧</span><span data-lang="en">About · Stack</span></em></h2>
         </header>
 
         <div class="about__grid">
           <div class="about__bio reveal">
-            <p>
-              我是 <strong>吳皇耀（Fann Wu）</strong>，一位具 15+ 年開發經驗的資深後端工程師與
-              AI 應用架構師。以 C# / ASP.NET / WPF / Xamarin 橫跨桌面、Web 與行動平台，
-              並具備 Win32 原生應用與 IIS 部署經驗。
+            <div class="about__id">
+              <div class="portrait portrait--sm">
+                <img
+                  class="portrait__img"
+                  src="assets/profile.jpg"
+                  alt="吳皇耀 Fann Wu"
+                  onerror="this.closest('.portrait').classList.add('no-photo')"
+                />
+                <svg viewBox="0 0 100 110" class="hex portrait__fallback" aria-hidden="true">
+                  <polygon points="50,3 95,29 95,81 50,107 5,81 5,29" class="hex__bg" />
+                  <text x="50" y="66" class="hex__text">FW</text>
+                </svg>
+              </div>
+              <div class="about__id-meta">
+                <strong>吳皇耀 · Fann Wu</strong>
+                <span>Senior Backend / Game / Blockchain Engineer</span>
+                <span>Taipei, Taiwan · 15+ yrs</span>
+              </div>
+            </div>
+            <p data-lang="zh">
+              職涯橫跨多領域：早期投入 IT 基礎建設與 EDA / GUI 工具開發，並以 C++ / Qt 交付桌面與
+              Win32 原生軟體；接著以 C# WPF / Xamarin、原生 Java Android 打造跨平台應用，深諳
+              ASP.NET / IIS 後台部署，亦曾擔任 <strong>ASP.NET 技術講師</strong>。桌面、Web、行動三端皆能獨立交付。
             </p>
-            <p>
-              我主導交付過 10+ 款遊戲後端系統與 5+ 個區塊鏈專案（NFT / DeFi / 預測市場 / 錢包），
-              橫跨 Ethereum、Solana、EOS、Tron 多鏈，並具澳洲、英國、香港跨國團隊協作經驗。
-              近年專注於 <strong>AI-assisted development workflow</strong>，以 Claude Code、Codex
-              帶領接案團隊，大幅提升開發效率與交付品質。
+            <p data-lang="en">
+              My career spans many domains: early on, IT infrastructure and EDA / GUI tooling, plus desktop
+              and Win32 native software in C++ / Qt; then cross-platform apps with C# WPF / Xamarin and native
+              Java Android, with deep ASP.NET / IIS deployment — and a stint as an <strong>ASP.NET instructor</strong>.
+              Desktop, web and mobile, all delivered independently.
+            </p>
+            <p data-lang="zh">
+              近年深耕遊戲後端與區塊鏈系統，作品涵蓋 <strong>NFT、DeFi、預測市場與錢包</strong>，
+              橫跨 Ethereum、Solana、EOS、Tron 多鏈，並與澳洲、英國、香港團隊跨國協作。
+              如今以 Claude Code、Codex 帶領接案團隊，把原估 7 天的功能模組壓縮到數小時完成、
+              交付週期縮短 <strong>6–7 成</strong>。
+            </p>
+            <p data-lang="en">
+              In recent years I've focused on game backends and blockchain — spanning
+              <strong>NFTs, DeFi, prediction markets and wallets</strong>, across Ethereum, Solana, EOS and
+              Tron, with teams in Australia, the UK and Hong Kong. Today I lead a freelance team with Claude
+              Code and Codex, compressing modules once estimated at 7 days into a few hours and cutting
+              delivery cycles by <strong>60–70%</strong>.
             </p>
           </div>
 
@@ -303,7 +417,7 @@
             <div class="skillgroup reveal">
               <h4>Backend &amp; Infra</h4>
               <div class="chips">
-                <span>微服務架構</span><span>Docker</span><span>WebSocket</span><span>REST API</span>
+                <span><span data-lang="zh">微服務架構</span><span data-lang="en">Microservices</span></span><span>Docker</span><span>WebSocket</span><span>REST API</span>
                 <span>MySQL</span><span>Oracle SP</span><span>Telegram Bot</span><span>Binance API</span>
               </div>
             </div>
@@ -311,7 +425,7 @@
               <h4>AI-Assisted Dev &amp; Leadership</h4>
               <div class="chips">
                 <span>Claude Code</span><span>OpenAI Codex</span><span>MCP</span><span>Spec-driven</span>
-                <span>團隊管理 / TPM</span><span>架構設計</span><span>Code Review</span>
+                <span><span data-lang="zh">團隊管理 / TPM</span><span data-lang="en">Team Lead / TPM</span></span><span><span data-lang="zh">架構設計</span><span data-lang="en">Architecture</span></span><span>Code Review</span>
               </div>
             </div>
           </div>
@@ -322,57 +436,134 @@
       <section class="section experience" id="experience">
         <header class="section__head reveal">
           <p class="section__idx">03 — EXPERIENCE</p>
-          <h2 class="section__title">Career Timeline<em>精選經歷</em></h2>
+          <h2 class="section__title">Career Timeline<em><span data-lang="zh">精選經歷</span><span data-lang="en">Selected roles</span></em></h2>
         </header>
 
         <ol class="timeline">
-          <li class="tl reveal">
+          <li class="tl reveal" style="--c:#ff8400">
+            <span class="tl__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l1.8 4.8L18.5 9l-4.7 1.6L12 15l-1.8-4.4L5.5 9l4.7-1.2z"/>
+                <path d="M18 14l.7 1.9L20.6 17l-1.9.7L18 19.6l-.7-1.9L15.4 17l1.9-.4z"/>
+              </svg>
+            </span>
             <span class="tl__year">2025.9 — Present</span>
             <div class="tl__body">
-              <h3>AI 應用架構師 / 資深後端工程師 <span class="tl__co">Freelancer · 接案</span></h3>
-              <p>直接對接客戶端 CTO，管理 6 人跨職能團隊、3 個並行案。主導白牌娛樂平台後端（串接 10 間遊戲廠商、2 家金流），導入 AI-assisted 工作流，個人開發效率提升 10x+。</p>
+              <h3 data-lang="zh">AI 應用架構師 / 資深後端工程師 <span class="tl__co">Freelancer · 接案</span></h3>
+              <h3 data-lang="en">AI Application Architect / Senior Backend Engineer <span class="tl__co">Freelancer</span></h3>
+              <p data-lang="zh">直接對接客戶端 CTO，管理 6 人跨職能團隊、3 個並行案。主導白牌娛樂平台後端（串接 10 間遊戲廠商、2 家金流），導入 AI-assisted 工作流，個人開發效率提升 10x+。</p>
+              <p data-lang="en">Reporting directly to client CTOs, leading a 6-person cross-functional team across 3 parallel projects. Led the backend of a white-label gaming platform (10 game vendors, 2 payment providers) and rolled out an AI-assisted workflow that lifted personal output 10x+.</p>
+              <div class="tl__tech" data-lang="zh"><span>Claude Code</span><span>白牌平台</span><span>6 人團隊</span></div>
+              <div class="tl__tech" data-lang="en"><span>Claude Code</span><span>White-label</span><span>6-person team</span></div>
             </div>
           </li>
-          <li class="tl reveal">
+          <li class="tl reveal" style="--c:#3a6ea5">
+            <span class="tl__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="6" rx="7" ry="3"/>
+                <path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/>
+                <path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>
+              </svg>
+            </span>
             <span class="tl__year">2025.5 — 2025.8</span>
             <div class="tl__body">
-              <h3>資深後端軟體工程師 <span class="tl__co">NexTeam 博思顧問（英國團隊）</span></h3>
-              <p>3 個月內同時推進 3–4 個後端專案，獨立交付 4 案（1 進 Production、2 通過 QA/UAT），零重大 bug。</p>
+              <h3 data-lang="zh">資深後端軟體工程師 <span class="tl__co">NexTeam 博思顧問（英國團隊）</span></h3>
+              <h3 data-lang="en">Senior Backend Engineer <span class="tl__co">NexTeam (UK)</span></h3>
+              <p data-lang="zh">3 個月內同時推進 3–4 個後端專案，獨立交付 4 案（1 進 Production、2 通過 QA/UAT），零重大 bug。</p>
+              <p data-lang="en">Drove 3–4 backend projects at once over three months, independently delivering 4 (1 to production, 2 through QA/UAT) with zero critical bugs.</p>
+              <div class="tl__tech" data-lang="zh"><span>Backend</span><span>SQL / SP</span><span>UK Remote</span></div>
+              <div class="tl__tech" data-lang="en"><span>Backend</span><span>SQL / SP</span><span>UK Remote</span></div>
             </div>
           </li>
-          <li class="tl reveal">
+          <li class="tl reveal" style="--c:#8a63d2">
+            <span class="tl__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                <path d="M14 3v6h6"/>
+                <path d="M9.7 13.5L8 15.2l1.7 1.7"/>
+                <path d="M14.3 13.5L16 15.2l-1.7 1.7"/>
+              </svg>
+            </span>
             <span class="tl__year">2024.12 — 2025.2</span>
             <div class="tl__body">
-              <h3>資深 Solidity 區塊鏈工程師 <span class="tl__co">皆凱科技（Polymarket 類預測平台）</span></h3>
-              <p>以技術顧問角色與 CEO 密集協作，交付 2 份核心智能合約初版（含完整測試與部署）與架構文件。</p>
+              <h3 data-lang="zh">資深 Solidity 區塊鏈工程師 <span class="tl__co">皆凱科技（Polymarket 類預測平台）</span></h3>
+              <h3 data-lang="en">Senior Solidity Engineer <span class="tl__co">JieKai (Polymarket-style platform)</span></h3>
+              <p data-lang="zh">以技術顧問角色與 CEO 密集協作，交付 2 份核心智能合約初版（含完整測試與部署）與架構文件。</p>
+              <p data-lang="en">Worked closely with the CEO as a technical advisor, delivering two core smart-contract drafts (with full tests and deployment) and the architecture documentation.</p>
+              <div class="tl__tech" data-lang="zh"><span>Solidity</span><span>Smart Contract</span><span>預測市場</span></div>
+              <div class="tl__tech" data-lang="en"><span>Solidity</span><span>Smart Contract</span><span>Prediction market</span></div>
             </div>
           </li>
-          <li class="tl reveal">
+          <li class="tl reveal" style="--c:#14a37f">
+            <span class="tl__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h12l3 5-9 13L3 8z"/>
+                <path d="M3 8h18"/>
+                <path d="M9.5 3L7 8l5 13 5-13-2.5-5"/>
+              </svg>
+            </span>
             <span class="tl__year">2022.3 — 2024.9</span>
             <div class="tl__body">
-              <h3>資深後端區塊鏈工程師 <span class="tl__co">鼎堯科技（澳洲團隊 · 全英文 · WFH）</span></h3>
-              <p>獨立主導 4 個 NFT 專案完整生命週期（合約設計 → 部署 → 上線），並交付 1 個 Solana 遊戲平台（含後台、監控、資料庫）。</p>
+              <h3 data-lang="zh">資深後端區塊鏈工程師 <span class="tl__co">鼎堯科技（澳洲團隊 · 全英文 · WFH）</span></h3>
+              <h3 data-lang="en">Senior Backend / Blockchain Engineer <span class="tl__co">DingYao (Australia · English · WFH)</span></h3>
+              <p data-lang="zh">獨立主導 4 個 NFT 專案完整生命週期（合約設計 → 部署 → 上線），並交付 1 個 Solana 遊戲平台（含後台、監控、資料庫）。</p>
+              <p data-lang="en">Independently owned the full lifecycle of 4 NFT projects (contract design → deployment → launch) and delivered a Solana game platform (admin, monitoring, database).</p>
+              <div class="tl__tech" data-lang="zh"><span>NFT ×4</span><span>Solana</span><span>全英文團隊</span></div>
+              <div class="tl__tech" data-lang="en"><span>NFT ×4</span><span>Solana</span><span>English team</span></div>
             </div>
           </li>
-          <li class="tl reveal">
+          <li class="tl reveal" style="--c:#ce4036">
+            <span class="tl__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="6" width="18" height="13" rx="2.5"/>
+                <path d="M3 10.5h18"/>
+                <circle cx="16.5" cy="14.5" r="1.3"/>
+              </svg>
+            </span>
             <span class="tl__year">2021</span>
             <div class="tl__body">
-              <h3>資深後端工程師 <span class="tl__co">星鏈 · 智眾（香港 Tron 錢包）· 怡和</span></h3>
-              <p>搭建遊戲平台伺服器與微服務架構、錢包串接一次通過測試零 bug；重構服務端、實作離線簽名機制提升錢包安全性。</p>
+              <h3 data-lang="zh">資深後端工程師 <span class="tl__co">星鏈 · 智眾（香港 Tron 錢包）· 怡和</span></h3>
+              <h3 data-lang="en">Senior Backend Engineer <span class="tl__co">XingLian · ZhiZhong (HK Tron wallet) · YiHe</span></h3>
+              <p data-lang="zh">搭建遊戲平台伺服器與微服務架構、錢包串接一次通過測試零 bug；重構服務端、實作離線簽名機制提升錢包安全性。</p>
+              <p data-lang="en">Built game-platform servers and microservice architecture, passing wallet integration tests first time with zero bugs; refactored services and added offline signing to harden wallet security.</p>
+              <div class="tl__tech" data-lang="zh"><span>微服務</span><span>Wallet</span><span>Tron</span></div>
+              <div class="tl__tech" data-lang="en"><span>Microservices</span><span>Wallet</span><span>Tron</span></div>
             </div>
           </li>
-          <li class="tl reveal">
+          <li class="tl reveal" style="--c:#c79a3a">
+            <span class="tl__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3.5" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="13.5" width="7" height="7" rx="1.5"/>
+                <path d="M10 7h4.5a2.5 2.5 0 0 1 2.5 2.5V13"/>
+              </svg>
+            </span>
             <span class="tl__year">2018 — 2020</span>
             <div class="tl__body">
-              <h3>區塊鏈工程師 / TPM <span class="tl__co">鴻鏈 · 傲勝 · 依依國際 · Freelancer</span></h3>
-              <p>設計部署多款區塊鏈遊戲與智能合約，兼顧 gas 優化與安全性；上海孵化器比賽奪冠，累計獲利約 20 ETH。</p>
+              <h3 data-lang="zh">區塊鏈工程師 / TPM <span class="tl__co">鴻鏈 · 傲勝 · 依依國際 · Freelancer</span></h3>
+              <h3 data-lang="en">Blockchain Engineer / TPM <span class="tl__co">HongLian · AoSheng · YiYi · Freelancer</span></h3>
+              <p data-lang="zh">設計部署多款區塊鏈遊戲與智能合約，兼顧 gas 優化與安全性；上海孵化器比賽奪冠，累計獲利約 20 ETH。</p>
+              <p data-lang="en">Designed and deployed multiple blockchain games and smart contracts with attention to gas optimization and security; won a Shanghai incubator competition with ~20 ETH in cumulative profit.</p>
+              <div class="tl__tech" data-lang="zh"><span>智能合約</span><span>區塊鏈遊戲</span><span>🏆 孵化器冠軍</span></div>
+              <div class="tl__tech" data-lang="en"><span>Smart Contract</span><span>Blockchain games</span><span>🏆 Incubator winner</span></div>
             </div>
           </li>
-          <li class="tl reveal">
+          <li class="tl reveal" style="--c:#3f566e">
+            <span class="tl__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="13" rx="2"/>
+                <path d="M3 8h18"/>
+                <path d="M9 21h6M12 17v4"/>
+              </svg>
+            </span>
             <span class="tl__year">2012 — 2017</span>
             <div class="tl__body">
-              <h3>軟體工程師 <span class="tl__co">閎藝 · 博發 · 知億 · 思銳</span></h3>
-              <p>C# WPF / Xamarin 跨平台 App、原生 Java Android（Google Play 上架）、Qt + C++ / OpenGL GUI 工具、Slot 遊戲與 Dell 鍵鼠控制軟體開發。</p>
+              <h3 data-lang="zh">軟體工程師 <span class="tl__co">閎藝 · 博發 · 知億 · 思銳</span></h3>
+              <h3 data-lang="en">Software Engineer <span class="tl__co">HongYi · BoFa · ZhiYi · SiRui</span></h3>
+              <p data-lang="zh">C# WPF / Xamarin 跨平台 App、原生 Java Android（Google Play 上架）、Qt + C++ / OpenGL GUI 工具、Slot 遊戲與 Dell 鍵鼠控制軟體開發。</p>
+              <p data-lang="en">C# WPF / Xamarin cross-platform apps, native Java Android (published on Google Play), Qt + C++ / OpenGL GUI tools, slot games and Dell keyboard/mouse control software.</p>
+              <div class="tl__tech" data-lang="zh"><span>C# · WPF</span><span>Java</span><span>Qt / C++</span></div>
+              <div class="tl__tech" data-lang="en"><span>C# · WPF</span><span>Java</span><span>Qt / C++</span></div>
             </div>
           </li>
         </ol>
@@ -382,13 +573,13 @@
       <section class="section contact" id="contact">
         <div class="contact__inner reveal">
           <p class="section__idx">04 — CONTACT</p>
-          <h2 class="contact__title">Let's build<br />something great.<em>一起打造下一個專案</em></h2>
+          <h2 class="contact__title">Let's build<br />something great.<em><span data-lang="zh">一起打造下一個專案</span><span data-lang="en">Let's build the next one together</span></em></h2>
           <a class="btn btn--solid btn--big" href="mailto:fanntone@gmail.com">fanntone@gmail.com <span class="arrow">↗</span></a>
 
           <ul class="contact__links">
             <li><a href="mailto:fanntone@gmail.com" target="_blank" rel="noopener">Email</a></li>
             <li><a href="https://github.com/fanntone" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="https://cake.me/fanntone" target="_blank" rel="noopener">Cake Resume</a></li>
+            <li><a href="https://www.cake.me/me/fanntone" target="_blank" rel="noopener">Cake Resume</a></li>
             <li><a href="tel:+886934086039">+886 934-086-039</a></li>
           </ul>
         </div>
@@ -398,7 +589,7 @@
     <footer class="footer">
       <span>© <span id="year">2026</span> 吳皇耀 · Fann Wu</span>
       <span>Senior Backend / Game / Blockchain Engineer · AI Application Architect</span>
-      <a href="#top" class="footer__top">Back to top ↑</a>
+      <a href="#top" class="footer__top"><span data-lang="en">Back to top ↑</span><span data-lang="zh">回到頂端 ↑</span></a>
     </footer>
 
     <script src="main.js"></script>

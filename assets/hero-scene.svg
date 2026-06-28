@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 620" fill="none">
+<defs>
+  <linearGradient id="gDesk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#efe6d6"/></linearGradient>
+  <linearGradient id="gScreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#33384a"/><stop offset="1" stop-color="#1d2230"/></linearGradient>
+  <linearGradient id="gHoodie" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#33538a"/><stop offset="1" stop-color="#1f3358"/></linearGradient>
+  <linearGradient id="gHair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3526"/><stop offset="1" stop-color="#2c1f15"/></linearGradient>
+  <linearGradient id="gChair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e7ddcd"/></linearGradient>
+  <radialGradient id="gGlow" cx="0.5" cy="0.45" r="0.6"><stop offset="0" stop-color="#fff5e6" stop-opacity="0.9"/><stop offset="1" stop-color="#fff5e6" stop-opacity="0"/></radialGradient>
+</defs>
+<style>
+  .floaty{transform-box:fill-box;transform-origin:center}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  .f1{animation:bob 5s ease-in-out infinite}.f2{animation:bob 6s ease-in-out .4s infinite}.f3{animation:bob 5.5s ease-in-out .8s infinite}
+  @media (prefers-reduced-motion:reduce){.floaty{animation:none}}
+</style>
+<ellipse cx="360" cy="300" rx="300" ry="260" fill="url(#gGlow)" />
+<ellipse cx="330" cy="508" rx="236" ry="72" fill="#f2a23d" />
+<ellipse cx="330" cy="508" rx="182" ry="55" fill="#f7be63" />
+<ellipse cx="330" cy="508" rx="120" ry="36" fill="#ffd98a" />
+<g class="floaty f1"><rect x="80" y="196" width="150" height="16" rx="6" fill="#caa978" /><polygon points="80,212 230,212 222,222 88,222" fill="#b08e5c" /><rect x="104" y="150" width="18" height="46" rx="3" fill="#3a5a93" /><rect x="124" y="158" width="16" height="38" rx="3" fill="#ff8400" /><rect x="142" y="150" width="18" height="46" rx="3" fill="#d9c4a3" /><rect x="186" y="170" width="26" height="26" rx="5" fill="#e6e0d3" /><ellipse cx="199" cy="170" rx="16" ry="8" fill="#cdbfa3" /><ellipse cx="199" cy="158" rx="8" ry="16" fill="#3fae5a" /><ellipse cx="189" cy="164" rx="5" ry="11" fill="#46bf63" /><ellipse cx="209" cy="166" rx="5" ry="10" fill="#46bf63" /></g>
+<g class="floaty f2"><rect x="470" y="120" width="176" height="128" rx="14" fill="#c79a5e" /><rect x="482" y="132" width="152" height="104" rx="8" fill="#a87f48" /><rect x="506" y="150" width="58" height="58" rx="4" fill="#bcd3ef" transform="rotate(-6 535 179)"/><rect x="566" y="158" width="54" height="66" rx="4" fill="#f3ead4" transform="rotate(5 593 191)"/><ellipse cx="535" cy="150" rx="5" ry="5" fill="#e2574f" /><ellipse cx="593" cy="160" rx="5" ry="5" fill="#e2574f" /></g>
+<rect x="150" y="372" width="16" height="116" rx="5" fill="#d8c19c" />
+<rect x="520" y="372" width="16" height="116" rx="5" fill="#d8c19c" />
+<polygon points="120,360 560,360 600,392 80,392" fill="#efe5d4" />
+<rect x="80" y="388" width="520" height="16" rx="8" fill="url(#gDesk)" />
+<polygon points="80,404 600,404 584,420 96,420" fill="#ddd0ba" />
+<rect x="196" y="196" width="150" height="104" rx="10" fill="#3a3f52" />
+<rect x="204" y="204" width="134" height="88" rx="6" fill="url(#gScreen)" />
+<rect x="214" y="214" width="30" height="70" rx="3" fill="#262b3a" />
+<rect x="252" y="222" width="76" height="5" rx="2" fill="#56607a" />
+<rect x="252" y="234" width="76" height="5" rx="2" fill="#56607a" />
+<rect x="252" y="246" width="76" height="5" rx="2" fill="#56607a" />
+<rect x="252" y="258" width="76" height="5" rx="2" fill="#56607a" />
+<rect x="252" y="270" width="76" height="5" rx="2" fill="#56607a" />
+<rect x="252" y="282" width="76" height="5" rx="2" fill="#56607a" />
+<rect x="266" y="300" width="12" height="60" rx="2" fill="#2f3445" />
+<rect x="360" y="180" width="168" height="120" rx="10" fill="#3a3f52" />
+<rect x="368" y="188" width="152" height="104" rx="6" fill="url(#gScreen)" />
+<rect x="380" y="200" width="30" height="5" rx="2" fill="#ff8400" />
+<rect x="418" y="200" width="48" height="5" rx="2" fill="#36b37e" />
+<rect x="474" y="200" width="22" height="5" rx="2" fill="#4c8dff" />
+<rect x="380" y="211" width="22" height="5" rx="2" fill="#36b37e" />
+<rect x="410" y="211" width="40" height="5" rx="2" fill="#4c8dff" />
+<rect x="380" y="222" width="22" height="5" rx="2" fill="#4c8dff" />
+<rect x="410" y="222" width="30" height="5" rx="2" fill="#a06bff" />
+<rect x="448" y="222" width="22" height="5" rx="2" fill="#e6c15a" />
+<rect x="478" y="222" width="22" height="5" rx="2" fill="#7fd1ff" />
+<rect x="380" y="233" width="48" height="5" rx="2" fill="#a06bff" />
+<rect x="436" y="233" width="22" height="5" rx="2" fill="#e6c15a" />
+<rect x="466" y="233" width="30" height="5" rx="2" fill="#7fd1ff" />
+<rect x="380" y="244" width="48" height="5" rx="2" fill="#e6c15a" />
+<rect x="436" y="244" width="22" height="5" rx="2" fill="#7fd1ff" />
+<rect x="380" y="255" width="22" height="5" rx="2" fill="#7fd1ff" />
+<rect x="410" y="255" width="30" height="5" rx="2" fill="#ff8400" />
+<rect x="448" y="255" width="22" height="5" rx="2" fill="#36b37e" />
+<rect x="380" y="266" width="30" height="5" rx="2" fill="#ff8400" />
+<rect x="418" y="266" width="22" height="5" rx="2" fill="#36b37e" />
+<rect x="380" y="277" width="30" height="5" rx="2" fill="#36b37e" />
+<rect x="418" y="277" width="40" height="5" rx="2" fill="#4c8dff" />
+<rect x="430" y="300" width="12" height="60" rx="2" fill="#2f3445" />
+<rect x="414" y="360" width="44" height="10" rx="3" fill="#cdbfa3" />
+<g><rect x="286" y="300" width="108" height="96" rx="26" fill="url(#gChair)" /><rect x="298" y="312" width="84" height="72" rx="18" fill="#ece2d1" /><rect x="300" y="300" width="92" height="86" rx="30" fill="url(#gHoodie)" /><ellipse cx="340" cy="306" rx="52" ry="30" fill="url(#gHoodie)" /><ellipse cx="340" cy="250" rx="40" ry="40" fill="#f1c6a0" /><path d="M302 250 a40 40 0 0 1 76 0 q-6 -30 -38 -30 q-32 0 -38 30 Z" fill="url(#gHair)"/><ellipse cx="340" cy="232" rx="40" ry="26" fill="url(#gHair)" /><rect x="300" y="248" width="8" height="5" rx="2" fill="#2c2017" /><rect x="360" y="300" width="18" height="74" rx="9" fill="url(#gHoodie)" /><ellipse cx="372" cy="372" rx="12" ry="10" fill="#f1c6a0" /><polygon points="330,392 350,392 360,470 352,470" fill="#b9bec6" /><polygon points="330,392 350,392 320,470 312,470" fill="#aeb3bb" /><ellipse cx="338" cy="470" rx="30" ry="8" fill="#9aa0a8" /></g>
+<polygon points="300,402 430,402 444,418 286,418" fill="#e7ddcc" />
+<polygon points="300,402 430,402 428,408 302,408" fill="#d4c8b2" />
+<ellipse cx="470" cy="410" rx="12" ry="8" fill="#e7ddcc" />
+<rect x="170" y="360" width="28" height="30" rx="6" fill="#ff8400" />
+<ellipse cx="184" cy="360" rx="14" ry="5" fill="#e2740a" />
+<rect x="178" y="330" width="3" height="32" rx="1" fill="#3a5a93" />
+<rect x="186" y="326" width="3" height="36" rx="1" fill="#36b37e" />
+<rect x="192" y="332" width="3" height="30" rx="1" fill="#e6c15a" />
+<rect x="486" y="360" width="26" height="28" rx="6" fill="#e6e0d3" />
+<ellipse cx="499" cy="360" rx="13" ry="5" fill="#cdbfa3" />
+<ellipse cx="499" cy="348" rx="9" ry="16" fill="#3fae5a" />
+<ellipse cx="491" cy="352" rx="5" ry="11" fill="#46bf63" />
+<ellipse cx="507" cy="352" rx="5" ry="11" fill="#46bf63" />
+<g class="floaty f3"><polygon points="596,470 652,470 644,540 604,540" fill="#d8c19c" /><polygon points="596,470 652,470 650,482 598,482" fill="#e7d6b4" /><ellipse cx="624" cy="430" rx="13" ry="46" fill="#2f8f49" transform="rotate(-26 624 470)"/><ellipse cx="624" cy="430" rx="13" ry="46" fill="#3fae5a" transform="rotate(-8 624 470)"/><ellipse cx="624" cy="430" rx="13" ry="46" fill="#48bf63" transform="rotate(10 624 470)"/><ellipse cx="624" cy="430" rx="13" ry="46" fill="#2f8f49" transform="rotate(28 624 470)"/></g>
+</svg>
