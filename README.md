@@ -10,13 +10,18 @@
 | --- | --- |
 | `index.html` | 頁面結構（轉場 / hero / 作品 / 關於 / 經歷 / 聯絡） |
 | `styles.css` | 設計系統與所有樣式 |
-| `main.js` | 載入轉場、scroll-reveal、header 狀態、行動版選單 |
-| `assets/hero-scene.svg` | 首頁主視覺：插畫「開發者在書桌前」（可編輯色塊） |
-| `assets/avatar.svg` | 像素風人物（載入轉場用，含揮手動畫） |
+| `main.js` | 載入轉場、語言切換、scroll-reveal、header 狀態、行動版選單 |
+| `assets/hero-model.glb` | **首頁與載入轉場的 3D 角色模型**（model-viewer 顯示） |
 | `assets/profile.jpg` | 你的大頭照（**需自行放入**，見下方） |
 | `assets/shots/*.png` | 7 個作品的預覽截圖（卡片縮圖） |
+| `assets/hero-scene.svg`, `assets/avatar.svg` | 舊版插畫／像素人物，已改用 3D 模型，目前未引用（保留備援） |
 
-純靜態、無建置步驟、無相依套件（字型走 Google Fonts CDN）。
+純靜態、無建置步驟。外部相依：Google Fonts、以及 `<model-viewer>`（CDN，顯示 .glb 3D 模型）。
+
+## ⚠️ 重要：必須用 HTTP 開啟（不能直接雙擊 index.html）
+
+首頁 3D 模型由瀏覽器 `fetch()` 載入 `.glb`，在 `file://`（直接雙擊檔案）會被 **CORS 擋下**、模型不會出現。
+請務必透過 **HTTP** 開啟：GitHub Pages 上沒問題；本機預覽請用 `python -m http.server`（見下）。
 
 ## ⚠️ 請放入你的大頭照
 
@@ -31,9 +36,8 @@
 ## 本機預覽
 
 ```bash
-# 任一方式皆可
 python -m http.server 8080      # 然後開 http://localhost:8080
-# 或直接用瀏覽器開啟 index.html
+# 注意：3D 模型需要 HTTP，直接雙擊 index.html（file://）模型不會載入
 ```
 
 ## 部署到 GitHub Pages
@@ -56,8 +60,10 @@ Source 選 `main` 分支根目錄，網址會是 `https://fanntone.github.io/por
   `--brand`（品牌色）、預覽圖 `assets/shots/*.png` 可自行調整。
 - **更新作品截圖**：用無頭瀏覽器重拍即可，例如
   `chrome --headless=new --screenshot=assets/shots/dice.png --window-size=1000,625 <url>`。
-- **載入轉場人物**：`assets/avatar.svg` 是像素風 SVG，可直接改色塊；
-  揮手動畫與時間在 `main.js`（`reveal` 的延遲）與 `styles.css`（`.preloader*`）。
+- **3D 模型**：換掉 `assets/hero-model.glb` 即可更換首頁與轉場的角色；
+  角度／自轉／光影在 `index.html` 的 `<model-viewer>` 屬性（`camera-orbit`、`auto-rotate`、`exposure`…）。
+  模型 7 MB 偏大，若想加速載入可用 `gltfpack -cc` 或 Draco 壓縮（可再幫你做）。
+- **語言切換**：右上角 EN / 中，文案為雙語 `data-lang` 區塊；預設中文，選擇存於 localStorage。
 - **社群分享縮圖（選用）**：放一張 `assets/og-image.png`（建議 1200×630），
   並在 `<head>` 加 `<meta property="og:image" content="assets/og-image.png" />`。
 - **配色**：所有顏色集中在 `styles.css` 最上方的 `:root` 變數。

@@ -24,6 +24,9 @@
     />
     <link rel="stylesheet" href="styles.css" />
 
+    <!-- 3D model viewer (for the hero + preloader glb) -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Cpolygon points='50,3 95,29 95,81 50,107 5,81 5,29' fill='%23ff8400'/%3E%3Ctext x='50' y='71' font-family='Arial' font-weight='900' font-size='46' text-anchor='middle' fill='%232d2a24'%3EF%3C/text%3E%3C/svg%3E"
@@ -45,7 +48,23 @@
       <div class="preloader__stage">
         <div class="preloader__avatar">
           <span class="preloader__speech">Hi! 你好 👋</span>
-          <img src="assets/avatar.svg" alt="" width="132" height="148" />
+          <model-viewer
+            id="preloadModel"
+            class="preloader__model"
+            src="assets/hero-model.glb"
+            alt=""
+            auto-rotate
+            auto-rotate-delay="0"
+            rotation-per-second="90deg"
+            interaction-prompt="none"
+            disable-zoom
+            disable-pan
+            disable-tap
+            environment-image="neutral"
+            exposure="1.15"
+            shadow-intensity="0"
+            camera-orbit="0deg 90deg auto"
+          ></model-viewer>
           <span class="preloader__shadow"></span>
         </div>
         <p class="preloader__name">FANN&nbsp;WU<em>吳皇耀 · 作品集</em></p>
@@ -124,11 +143,24 @@
           </div>
 
           <div class="hero__scene reveal">
-            <img
-              class="hero__scene-img"
-              src="assets/hero-scene.svg"
-              alt="插畫：吳皇耀在雙螢幕前開發"
-            />
+            <model-viewer
+              class="hero__model"
+              src="assets/hero-model.glb"
+              alt="吳皇耀的 3D 角色模型"
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="600"
+              rotation-per-second="18deg"
+              interaction-prompt="none"
+              disable-zoom
+              environment-image="neutral"
+              exposure="1.1"
+              shadow-intensity="0.7"
+              shadow-softness="1"
+              camera-orbit="0deg 87deg auto"
+              min-camera-orbit="auto 60deg auto"
+              max-camera-orbit="auto 100deg auto"
+            ></model-viewer>
             <span class="hero__badge-chip">
               <span class="pulse"></span>
               <span data-lang="en">Available for projects</span><span data-lang="zh">開放接案中</span>

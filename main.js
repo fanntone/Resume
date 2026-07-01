@@ -4,14 +4,25 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---- Preloader: let the character play, then lift the curtain ---- */
+  /* ---- Preloader: wait for the 3D model, then lift the curtain ---- */
+  let revealed = false;
+  const preloaderEl = document.getElementById("preloader");
   function reveal() {
+    if (revealed) return;
+    revealed = true;
     document.body.classList.remove("is-loading");
+    // stop the preloader's 3D render loop shortly after it slides away
+    setTimeout(() => { if (preloaderEl) preloaderEl.style.display = "none"; }, 1000);
   }
-  // give the avatar drop + wave + progress bar time to be seen
-  window.addEventListener("load", () => setTimeout(reveal, reduceMotion ? 0 : 1600));
-  // safety fallback so the page is never stuck behind the preloader
-  setTimeout(reveal, 5000);
+  const preModel = document.getElementById("preloadModel");
+  if (preModel) {
+    preModel.addEventListener("load", () => setTimeout(reveal, reduceMotion ? 0 : 900));
+    preModel.addEventListener("error", () => setTimeout(reveal, 300));
+    setTimeout(reveal, 9000); // hard fallback if the model never loads
+  } else {
+    window.addEventListener("load", () => setTimeout(reveal, reduceMotion ? 0 : 1600));
+    setTimeout(reveal, 5000);
+  }
 
   /* ---- Current year ---- */
   const yearEl = document.getElementById("year");
