@@ -528,7 +528,18 @@ body:not(.is-loading) .preloader { transform: translateY(-101%); visibility: hid
   background: var(--card); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
   padding: 18px 18px 20px; text-align: center;
 }
+.lab__model-wrap { position: relative; }
 .lab__model { width: 100%; height: clamp(280px, 30vw, 400px); background: transparent; --poster-color: transparent; }
+.lab__hint {
+  position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--pixel); font-size: 9px; letter-spacing: 0.5px; white-space: nowrap;
+  background: rgba(45, 42, 36, 0.72); color: var(--bg);
+  padding: 6px 12px; border-radius: 999px;
+  pointer-events: none;
+  animation: hint-fade 4s ease-in-out infinite;
+}
+@keyframes hint-fade { 0%, 60% { opacity: 1; } 85%, 100% { opacity: 0.45; } }
 .lab__caption { font-family: var(--pixel); font-size: 9.5px; letter-spacing: 1px; color: var(--ink-soft); margin-top: 10px; }
 
 @media (max-width: 900px) {

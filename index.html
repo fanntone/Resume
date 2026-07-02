@@ -462,22 +462,29 @@
           </div>
 
           <div class="lab__viewer reveal">
-            <model-viewer
-              class="lab__model"
-              src="assets/hero-model-dance.glb"
-              alt="Pipeline output: rigged 3D character, dancing"
-              autoplay
-              animation-name="HipHopDancing"
-              interaction-prompt="none"
-              camera-controls
-              environment-image="neutral"
-              exposure="1.1"
-              shadow-intensity="0.6"
-              camera-target="0m 0.5m 0m"
-              camera-orbit="0deg 78deg 2.4m"
-              min-camera-orbit="auto auto 1.4m"
-              max-camera-orbit="auto auto 3.5m"
-            ></model-viewer>
+            <div class="lab__model-wrap">
+              <model-viewer
+                class="lab__model"
+                src="assets/hero-model-dance.glb"
+                alt="Pipeline output: rigged 3D character, dancing"
+                autoplay
+                animation-name="HipHopDancing"
+                interaction-prompt="auto"
+                interaction-prompt-style="basic"
+                camera-controls
+                environment-image="neutral"
+                exposure="1.1"
+                shadow-intensity="0.6"
+                camera-target="0m 0.5m 0m"
+                camera-orbit="0deg 78deg 2.4m"
+                min-camera-orbit="auto auto 1.4m"
+                max-camera-orbit="auto auto 3.5m"
+              ></model-viewer>
+              <span class="lab__hint">
+                <span data-lang="zh">🖱️ 拖曳旋轉 · 滾輪縮放</span>
+                <span data-lang="en">🖱️ Drag to rotate · Scroll to zoom</span>
+              </span>
+            </div>
             <p class="lab__caption" data-lang="zh">此 pipeline 的實際產出 · Mixamo 動作重定位（Hip Hop Dancing）</p>
             <p class="lab__caption" data-lang="en">Live pipeline output — Mixamo-retargeted animation (Hip Hop Dancing)</p>
           </div>
