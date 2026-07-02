@@ -382,13 +382,15 @@
       <section class="section lab" id="lab">
         <header class="section__head reveal">
           <p class="section__idx">02 — AI TOOLING</p>
-          <h2 class="section__title">AI Content Pipeline<em><span data-lang="zh">自建 Photo → 3D 角色生成工具</span><span data-lang="en">Self-built photo-to-3D character tool</span></em></h2>
+          <h2 class="section__title">AI Content Pipeline<em><span data-lang="zh">自建 Photo → 3D 遊戲角色生成工具</span><span data-lang="en">Self-built photo-to-3D game character tool</span></em></h2>
           <p class="section__sub" data-lang="zh">
-            為了替作品集打造專屬的 3D 角色，我自架了一套本機生成式 AI 管線；首頁那個會轉圈揮手的角色，就是它的實際產出。
+            為了替作品集打造專屬的 3D 角色，我自架了一套本機生成式 AI 管線，全程在自己的 RTX 3060 上跑、不依賴任何雲端 API，
+            產出低面數、遊戲可用的 3D 角色；再透過 Blender + Mixamo 完成綁骨與動畫，最終產出首頁那個會轉圈揮手的角色。
           </p>
           <p class="section__sub" data-lang="en">
-            To give this portfolio its own 3D character, I built a local generative-AI pipeline —
-            the spinning character on the homepage is a direct output of it.
+            To give this portfolio its own 3D character, I built a local generative-AI pipeline that runs
+            entirely on my own RTX 3060 — no cloud APIs — producing a low-poly, game-ready 3D character;
+            Blender + Mixamo then handle rigging and animation, resulting in the spinning character on the homepage.
           </p>
         </header>
 
@@ -405,8 +407,8 @@
                 <div class="pipeline__body">
                   <h3 data-lang="zh">照片輸入</h3>
                   <h3 data-lang="en">Photo input</h3>
-                  <p data-lang="zh">依主體類型（人物 / 物件）切換 BiRefNet 去背模型，避免背景雜物混入 3D 網格；自動縮放過大手機照片，避免逾時。</p>
-                  <p data-lang="en">Subject-aware BiRefNet background removal (portrait vs. object model) keeps clutter out of the mesh; oversized phone photos are auto-downscaled to avoid timeouts.</p>
+                  <p data-lang="zh">依主體類型切換去背模型：人物用 BiRefNet（birefnet-portrait），一般物件（樹木、建築、花卉等）用 isnet-general-use，避免背景雜物或其他前景物件被一起做進 3D 網格。手機大圖自動縮放至長邊 1024px，避免逾時。</p>
+                  <p data-lang="en">Background removal is subject-aware: BiRefNet's <code>birefnet-portrait</code> model for people, <code>isnet-general-use</code> for general objects (trees, buildings, flowers) — keeping clutter and stray foreground objects out of the mesh. Large phone photos are auto-downscaled to a 1024px long edge to avoid timeouts.</p>
                 </div>
               </li>
               <li class="pipeline__step reveal" style="--c:#8a63d2">
@@ -420,8 +422,8 @@
                 <div class="pipeline__body">
                   <h3 data-lang="zh">卡通化</h3>
                   <h3 data-lang="en">Cartoonize</h3>
-                  <p data-lang="zh">Stable Diffusion + ControlNet（Canny）保留輪廓重繪為 Q 版風格；改用中性外部 VAE 修正原模型偏暖色偏的問題。</p>
-                  <p data-lang="en">Stable Diffusion + Canny ControlNet redraws the subject in a chibi style while preserving pose; a neutral external VAE fixes the checkpoint's warm color cast.</p>
+                  <p data-lang="zh">Stable Diffusion 1.5（Disney Pixar 風格底模）+ ControlNet（Canny）保留原圖輪廓重繪為可愛 3D 卡通風格；改用中性外部 VAE 並調整負向提示詞，修正原底模偏暗、偏紅的色偏問題。</p>
+                  <p data-lang="en">Stable Diffusion 1.5 (a Disney-Pixar-style checkpoint) + Canny ControlNet redraws the subject into a cute 3D-cartoon look while preserving its outline; a neutral external VAE plus tuned negative prompts fix the checkpoint's dark, reddish color cast.</p>
                 </div>
               </li>
               <li class="pipeline__step reveal" style="--c:#14a37f">
@@ -435,8 +437,8 @@
                 <div class="pipeline__body">
                   <h3 data-lang="zh">生成 3D 網格</h3>
                   <h3 data-lang="en">Generate 3D mesh</h3>
-                  <p data-lang="zh">卡通圖交給 TRELLIS.2 生成帶貼圖的 3D 網格與 .glb 檔，整套流程以 ComfyUI 自架後端串接、Gradio 提供操作介面。</p>
-                  <p data-lang="en">The cartoon image goes to TRELLIS.2 to produce a textured 3D mesh (.glb), orchestrated through a self-hosted ComfyUI backend with a Gradio front-end.</p>
+                  <p data-lang="zh">卡通圖交給 TRELLIS.2（FP8 量化）生成帶 PBR 貼圖的 3D 網格，並用 Quad Remesh + Cumesh 網格簡化將面數控制在 5000 面以內，符合遊戲引擎效能需求。整套產線以 ComfyUI 自架後端串接、Gradio 建立兩階段操作介面（先秒級預覽卡通圖確認風格，再生成 3D，避免浪費算力在不滿意的結果上）。</p>
+                  <p data-lang="en">The cartoon image goes to TRELLIS.2 (FP8-quantized) to produce a PBR-textured 3D mesh, then Quad Remesh + Cumesh simplification caps it under 5,000 faces for game-engine performance. The whole pipeline runs on a self-hosted ComfyUI backend with a two-stage Gradio UI — a fast cartoon preview to confirm the style first, then 3D generation, so compute isn't wasted on results you'd reject anyway.</p>
                 </div>
               </li>
               <li class="pipeline__step reveal" style="--c:#3a6ea5">
@@ -449,15 +451,15 @@
                 <div class="pipeline__body">
                   <h3 data-lang="zh">綁骨與動畫</h3>
                   <h3 data-lang="en">Rig &amp; animate</h3>
-                  <p data-lang="zh">將 .glb 匯入 <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a> 自動綁定骨架並套用揮手等動作，匯出成本站首頁與轉場使用的模型。</p>
-                  <p data-lang="en">The .glb is auto-rigged and animated (e.g. the wave) in <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a>, then exported as the model driving this site's hero and preloader.</p>
+                  <p data-lang="zh">產出的 .glb 匯入 Blender 整理後轉給 <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a> 自動綁定骨架並套用揮手等動作，匯出成本站首頁與轉場使用的模型。這段用的是 Blender + Mixamo 兩個成熟工具，跟前三步的自架 AI 產線是分開的。</p>
+                  <p data-lang="en">The generated .glb is cleaned up in Blender, then handed to <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a> for auto-rigging and animation (e.g. the wave) — exported as the model driving this site's hero and preloader. This step uses two established tools, Blender and Mixamo, separate from the self-built AI pipeline in the first three steps.</p>
                 </div>
               </li>
             </ol>
 
             <div class="lab__tags reveal">
               <span>ComfyUI (self-hosted)</span><span>Stable Diffusion</span><span>ControlNet</span>
-              <span>BiRefNet</span><span>TRELLIS.2</span><span>Gradio</span><span>Mixamo</span><span>model-viewer</span>
+              <span>BiRefNet</span><span>TRELLIS.2</span><span>Gradio</span><span>Blender</span><span>Mixamo</span><span>model-viewer</span>
             </div>
           </div>
 
