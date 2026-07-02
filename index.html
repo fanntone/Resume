@@ -86,6 +86,7 @@
         <nav class="nav" id="nav">
           <a href="#work" class="nav__link"><span data-lang="en">Work</span><span data-lang="zh">作品</span></a>
           <a href="#lab" class="nav__link"><span data-lang="en">AI Lab</span><span data-lang="zh">AI 工具</span></a>
+          <a href="#private" class="nav__link"><span data-lang="en">Private</span><span data-lang="zh">私藏</span></a>
           <a href="#about" class="nav__link"><span data-lang="en">About</span><span data-lang="zh">關於</span></a>
           <a href="#experience" class="nav__link"><span data-lang="en">Experience</span><span data-lang="zh">經歷</span></a>
           <a href="#contact" class="nav__link nav__link--cta"><span data-lang="en">Contact</span><span data-lang="zh">聯絡</span></a>
@@ -493,10 +494,67 @@
         </div>
       </section>
 
+      <!-- ░░ Private: unreleased side projects ░░ -->
+      <section class="section private" id="private">
+        <header class="section__head reveal">
+          <p class="section__idx">03 — PRIVATE / UNRELEASED</p>
+          <h2 class="section__title">Private Lab<em><span data-lang="zh">未公開研究專案</span><span data-lang="en">Unreleased research projects</span></em></h2>
+          <p class="section__sub" data-lang="zh">
+            除了公開作品，我也在打磨一些還沒對外公開的技術專案，這裡會陸續收錄。第一個是為個人量化交易研究打造的訊號分析系統。
+          </p>
+          <p class="section__sub" data-lang="en">
+            Beyond my public work, I'm also building technical projects I haven't released publicly yet —
+            this section will grow over time. First up: a signal-analysis system built for my own quant trading research.
+          </p>
+        </header>
+
+        <div class="priv-grid">
+          <article class="priv-card reveal" style="--brand:#22c55e">
+            <div class="priv-card__media">
+              <img src="assets/shots/invest-signal.png" alt="BTC/USDT 15m signal system dashboard" loading="lazy" />
+              <span class="priv-card__badge">
+                <span data-lang="zh">🔒 私有專案 · 尚未部署</span>
+                <span data-lang="en">🔒 Private · Not deployed</span>
+              </span>
+            </div>
+            <div class="priv-card__content">
+              <h3 class="priv-card__title" data-lang="zh">BTC/USDT 15m 訊號系統<em>混合指標策略 · Telegram 推播</em></h3>
+              <h3 class="priv-card__title" data-lang="en">BTC/USDT 15m Signal System<em>Hybrid-indicator strategy · Telegram alerts</em></h3>
+              <p class="priv-card__desc" data-lang="zh">
+                本機部署的量化分析輔助系統：混合技術指標策略為 BTC/ETH 永續合約產生建議性質進出場訊號（不自動下單），
+                透過 Telegram 即時推播；具即時 K 線儀表板（EMA / 布林 / MACD / KD）、完整回測研究、每日自我迭代與逐筆訊號復盤（MFE/MAE）。
+                主期間 2025-01-20 起（空頭 −37%）與 2024 全年驗證集（多頭 +138%）雙重回測，成本已計入手續費、滑點與資金費率。
+              </p>
+              <p class="priv-card__desc" data-lang="en">
+                A locally-run quant research assistant: a hybrid-indicator strategy generates advisory
+                entry/exit signals for BTC/ETH perpetual futures (no auto-trading), pushed live to Telegram —
+                with a real-time K-line dashboard (EMA / Bollinger / MACD / KD), full backtest research,
+                daily self-iteration, and per-trade signal review (MFE/MAE). Dual-period backtested from
+                2025-01-20 (a −37% bear market) and validated against all of 2024 (a +138% bull market), with
+                fees, slippage and funding costs fully included.
+              </p>
+              <div class="priv-card__metrics">
+                <div><b>4</b><span data-lang="zh">現役策略</span><span data-lang="en">Active strategies</span></div>
+                <div><b>1.20–1.42</b><span data-lang="zh">獲利因子 PF</span><span data-lang="en">Profit factor</span></div>
+                <div><b>3.6–22.5%</b><span data-lang="zh">最大回撤</span><span data-lang="en">Max drawdown</span></div>
+                <div><b>0</b><span data-lang="zh">主期間爆倉次數</span><span data-lang="en">Liquidations (main period)</span></div>
+              </div>
+              <div class="priv-card__tags">
+                <span>Python</span><span>FastAPI</span><span>SQLite</span><span>pandas / pyarrow</span>
+                <span>Binance Futures API</span><span>Telegram Bot API</span><span>pytest</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="work__more reveal" data-lang="zh">更多未公開專案陸續更新中。</p>
+        <p class="work__more reveal" data-lang="en">More unreleased projects will be added over time.</p>
+      </section>
+
       <!-- ░░ About / Skills ░░ -->
       <section class="section about" id="about">
         <header class="section__head reveal">
-          <p class="section__idx">03 — ABOUT</p>
+          <p class="section__idx">04 — ABOUT</p>
           <h2 class="section__title">Profile &amp; Stack<em><span data-lang="zh">關於我 · 技術棧</span><span data-lang="en">About · Stack</span></em></h2>
         </header>
 
@@ -583,7 +641,7 @@
       <!-- ░░ Experience ░░ -->
       <section class="section experience" id="experience">
         <header class="section__head reveal">
-          <p class="section__idx">04 — EXPERIENCE</p>
+          <p class="section__idx">05 — EXPERIENCE</p>
           <h2 class="section__title">Career Timeline<em><span data-lang="zh">精選經歷</span><span data-lang="en">Selected roles</span></em></h2>
         </header>
 
@@ -720,7 +778,7 @@
       <!-- ░░ Contact ░░ -->
       <section class="section contact" id="contact">
         <div class="contact__inner reveal">
-          <p class="section__idx">05 — CONTACT</p>
+          <p class="section__idx">06 — CONTACT</p>
           <h2 class="contact__title">Let's build<br />something great.<em><span data-lang="zh">一起打造下一個專案</span><span data-lang="en">Let's build the next one together</span></em></h2>
           <a class="btn btn--solid btn--big" href="mailto:fanntone@gmail.com">fanntone@gmail.com <span class="arrow">↗</span></a>
 
